@@ -22,7 +22,8 @@ describe('todos reducer', () => {
       byId: {
         0: {
           text: 'Use ICCs!',
-          completed: false
+          completed: false,
+          id: 0
         }
       },
       byOrder: [0]

@@ -12,7 +12,7 @@ import {
 // indexed domain gives some perf benefits.
 const initialState = {
   byId: {
-    0: { text: 'Use ICCs!', completed: false }
+    0: { text: 'Use ICCs!', completed: false, id: 0 }
   },
   byOrder: [0] // in case order makes sense (e.g. you need to move/sort todos). This array will have IDs, not the objects
 }

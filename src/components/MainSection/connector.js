@@ -3,7 +3,7 @@ import { globalQuery } from '../../lib/selectorHelpers'
 import { allTodos } from '../../state/queries'
 import { clearCompleted, completeAll } from '../../domains/todo/actions'
 
-const mapStateToProps = globalQuery(allTodos, (todos) => ({ todos }))
+const mapStateToProps = globalQuery(allTodos, (todoIds) => ({ todoIds }))
 
 const mapDispatchToProps = dispatch => ({
   clearCompleted: () => dispatch(clearCompleted()),
