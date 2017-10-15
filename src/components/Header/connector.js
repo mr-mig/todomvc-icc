@@ -5,7 +5,7 @@ const mapDispatchToProps = dispatch => ({
   addTodo: (text) => dispatch(addTodo(text))
 })
 
-export const connector = connect(
+export default connect(
   null,
   mapDispatchToProps
 )
