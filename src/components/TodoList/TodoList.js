@@ -4,7 +4,7 @@ import MainSection from '../MainSection'
 
 export default () => (
   <div>
-    <Header/>
+    <Header title="todos"/>
     <MainSection/>
   </div>
 )
