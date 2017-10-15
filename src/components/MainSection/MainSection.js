@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import TodoItem from '../TodoItem'
 import Footer from '../Footer'
+import CompleteTodoCheckbox from '../CompleteTodoCheckbox'
+import DeleteTodoButton from '../DeleteTodoButton'
 
 export default class MainSection extends Component {
   static propTypes = {
@@ -34,7 +36,11 @@ export default class MainSection extends Component {
         {this.renderToggleAll(completedCount)}
         <ul className="todo-list">
           {todoIds.map(todoId =>
-            <TodoItem key={ todoId } id={ todoId } />
+            <TodoItem key={ todoId }
+                      id={ todoId }
+                      leftComponent={ todo => <CompleteTodoCheckbox id={ todo.id }/> }
+                      rightComponent={ todo => <DeleteTodoButton id={ todo.id }/> }
+            />
           )}
         </ul>
         <Footer/>

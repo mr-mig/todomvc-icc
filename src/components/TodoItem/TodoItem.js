@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import EditTodoInput from '../TodoInput/edit'
-import CompleteTodoCheckbox from '../CompleteTodoCheckbox'
-import DeleteTodoButton from '../DeleteTodoButton'
 
 export default class TodoItem extends Component {
   static propTypes = {
-    todo: PropTypes.object.isRequired
+    todo: PropTypes.object.isRequired,
+    leftComponent: PropTypes.object,
+    rightComponent: PropTypes.object
   }
 
   state = {
@@ -36,11 +36,15 @@ export default class TodoItem extends Component {
     } else {
       element = (
         <div className="view">
-          <CompleteTodoCheckbox id={ todo.id }/>
+
+          { this.props.leftComponent && this.props.leftComponent(todo) }
+
           <label onDoubleClick={this.handleDoubleClick}>
             {todo.text}
           </label>
-          <DeleteTodoButton id={ todo.id }/>
+
+          { this.props.rightComponent && this.props.rightComponent(todo) }
+
         </div>
       )
     }
