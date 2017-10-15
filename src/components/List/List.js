@@ -1,19 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Header from '../components/Header'
-import MainSection from '../components/MainSection'
-import * as TodoActions from '../actions'
+import Header from '../Header'
+import MainSection from '../MainSection'
 
-const App = ({todos, actions}) => (
+export const List = ({todos, actions}) => (
   <div>
     <Header addTodo={actions.addTodo} />
     <MainSection todos={todos} actions={actions} />
   </div>
 )
 
-App.propTypes = {
+List.propTypes = {
   todos: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 }
@@ -23,10 +21,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(TodoActions, dispatch)
+
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(List)
