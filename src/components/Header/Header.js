@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import TodoTextInput from './TodoTextInput'
+import AddTodoInput from '../AddTodoInput'
 
 export default class Header extends Component {
   static propTypes = {
@@ -17,7 +17,7 @@ export default class Header extends Component {
     return (
       <header className="header">
         <h1>todos</h1>
-        <TodoTextInput newTodo
+        <AddTodoInput newTodo
                        onSave={this.handleSave}
                        placeholder="What needs to be done?" />
       </header>

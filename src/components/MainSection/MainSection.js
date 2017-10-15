@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import TodoItem from './TodoItem'
-import Footer from './Footer'
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../domains/ui/constants'
+import TodoItem from '../TodoItem'
+import Footer from '../Footer'
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../domains/ui/constants'
 
 const TODO_FILTERS = {
   [SHOW_ALL]: () => true,
@@ -13,13 +13,14 @@ const TODO_FILTERS = {
 export default class MainSection extends Component {
   static propTypes = {
     todos: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    clearCompleted: PropTypes.func.isRequired,
+    completeAll: PropTypes.func.isRequired
   }
 
   state = { filter: SHOW_ALL }
 
   handleClearCompleted = () => {
-    this.props.actions.clearCompleted()
+    this.props.clearCompleted()
   }
 
   handleShow = filter => {
@@ -27,7 +28,7 @@ export default class MainSection extends Component {
   }
 
   renderToggleAll(completedCount) {
-    const { todos, actions } = this.props
+    const { todos, completeAll } = this.props
     if (todos.length > 0) {
       return (
         <span>
@@ -35,7 +36,7 @@ export default class MainSection extends Component {
                  type="checkbox"
                  checked={completedCount === todos.length}
                  />
-          <label onClick={actions.completeAll}/>
+          <label onClick={completeAll}/>
         </span>
       )
     }

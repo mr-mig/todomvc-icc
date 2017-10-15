@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import TodoTextInput from './TodoTextInput'
+import AddTodoInput from '../AddTodoInput'
 
 export default class TodoItem extends Component {
   static propTypes = {
@@ -34,7 +34,7 @@ export default class TodoItem extends Component {
     let element
     if (this.state.editing) {
       element = (
-        <TodoTextInput text={todo.text}
+        <AddTodoInput text={todo.text}
                        editing={this.state.editing}
                        onSave={(text) => this.handleSave(todo.id, text)} />
       )

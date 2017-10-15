@@ -1,9 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { List } from '../List'
+import TodoList from '../TodoList'
 
-export const App = ({todos, actions}) => (
+export const App = () => (
   <div>
-    <List/>
+    <TodoList />
   </div>
 )

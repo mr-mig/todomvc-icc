@@ -92,7 +92,7 @@ function completeAll({ byId, byOrder }) {
     byId: byOrder.reduce(
       (acc, id) => {
         byId[id].completed = !areAllMarked
-        acc[id] = { ... byId[id] }
+        acc[id] = { ...byId[id] }
         return acc
       },
       {}),
