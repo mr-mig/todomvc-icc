@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import AddTodoInput from '../AddTodoInput'
 import CompleteTodoCheckbox from '../CompleteTodoCheckbox'
+import DeleteTodoButton from '../DeleteTodoButton'
 
 export default class TodoItem extends Component {
   static propTypes = {
     todo: PropTypes.object.isRequired,
-    onSaveAfterEdit: PropTypes.func.isRequired,
-    onToggleComplete: PropTypes.func.isRequired
+    onSaveAfterEdit: PropTypes.func.isRequired
   }
 
   state = {
@@ -25,7 +25,7 @@ export default class TodoItem extends Component {
   }
 
   render() {
-    const { todo, completeTodo, deleteTodo } = this.props
+    const { todo } = this.props
 
     let element
     if (this.state.editing) {
@@ -41,8 +41,7 @@ export default class TodoItem extends Component {
           <label onDoubleClick={this.handleDoubleClick}>
             {todo.text}
           </label>
-          <button className="destroy"
-                  onClick={() => deleteTodo(todo.id)} />
+          <DeleteTodoButton id={ todo.id }/>
         </div>
       )
     }
