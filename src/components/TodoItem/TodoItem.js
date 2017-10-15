@@ -7,6 +7,7 @@ export default class TodoItem extends Component {
   static propTypes = {
     todo: PropTypes.object.isRequired,
     editTodo: PropTypes.func.isRequired,
+    onSaveAfterEdit: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
     completeTodo: PropTypes.func.isRequired
   }
@@ -20,12 +21,8 @@ export default class TodoItem extends Component {
   }
 
   handleSave = (id, text) => {
-    if (text.length === 0) {
-      this.props.deleteTodo(id)
-    } else {
-      this.props.editTodo(id, text)
-    }
     this.setState({ editing: false })
+    this.props.onSaveAfterEdit(id, text)
   }
 
   render() {
