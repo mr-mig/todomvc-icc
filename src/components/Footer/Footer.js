@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../domains/ui/constants'
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../domains/filter/constants'
 
 const FILTER_TITLES = {
   [SHOW_ALL]: 'All',
@@ -14,8 +14,9 @@ export default class Footer extends Component {
     completedCount: PropTypes.number.isRequired,
     activeCount: PropTypes.number.isRequired,
     filter: PropTypes.string.isRequired,
+    
     onClearCompleted: PropTypes.func.isRequired,
-    onShow: PropTypes.func.isRequired
+    onFilterClick: PropTypes.func.isRequired
   }
 
   renderTodoCount() {
@@ -31,12 +32,12 @@ export default class Footer extends Component {
 
   renderFilterLink(filter) {
     const title = FILTER_TITLES[filter]
-    const { filter: selectedFilter, onShow } = this.props
+    const { filter: selectedFilter, onFilterClick } = this.props
 
     return (
       <a className={classnames({ selected: filter === selectedFilter })}
          style={{ cursor: 'pointer' }}
-         onClick={() => onShow(filter)}>
+         onClick={() => onFilterClick(filter)}>
         {title}
       </a>
     )

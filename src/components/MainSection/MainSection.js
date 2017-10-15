@@ -2,33 +2,17 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import TodoItem from '../TodoItem'
 import Footer from '../Footer'
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../domains/ui/constants'
-
-const TODO_FILTERS = {
-  [SHOW_ALL]: () => true,
-  [SHOW_ACTIVE]: todo => !todo.completed,
-  [SHOW_COMPLETED]: todo => todo.completed
-}
 
 export default class MainSection extends Component {
   static propTypes = {
     todoIds: PropTypes.array.isRequired,
-    clearCompleted: PropTypes.func.isRequired,
-    completeAll: PropTypes.func.isRequired
-  }
+    completedCount: PropTypes.number.isRequired,
 
-  state = { filter: SHOW_ALL }
-
-  handleClearCompleted = () => {
-    this.props.clearCompleted()
-  }
-
-  handleShow = filter => {
-    this.setState({ filter })
+    onCompleteAllClick: PropTypes.func.isRequired
   }
 
   renderToggleAll(completedCount) {
-    const { todoIds, completeAll } = this.props
+    const { todoIds, onCompleteAllClick } = this.props
     if (todoIds.length > 0) {
       return (
         <span>
@@ -36,47 +20,24 @@ export default class MainSection extends Component {
                  type="checkbox"
                  checked={completedCount === todoIds.length}
                  />
-          <label onClick={completeAll}/>
+          <label onClick={onCompleteAllClick}/>
         </span>
       )
     }
   }
 
-  renderFooter(completedCount) {
-    const { todoIds } = this.props
-    const { filter } = this.state
-    const activeCount = todoIds.length - completedCount
-
-    if (todoIds.length) {
-      return (
-        <Footer completedCount={completedCount}
-                activeCount={activeCount}
-                filter={filter}
-                onClearCompleted={this.handleClearCompleted}
-                onShow={this.handleShow} />
-      )
-    }
-  }
-
   render() {
-    const { todoIds } = this.props
-    const { filter } = this.state
-
-    const filteredTodos = todoIds.filter(TODO_FILTERS[filter])
-    const completedCount = todoIds.reduce((count, todo) =>
-      todo.completed ? count + 1 : count,
-      0
-    )
+    const { todoIds, completedCount } = this.props
 
     return (
       <section className="main">
         {this.renderToggleAll(completedCount)}
         <ul className="todo-list">
-          {filteredTodos.map(todoId =>
+          {todoIds.map(todoId =>
             <TodoItem key={ todoId } id={ todoId } />
           )}
         </ul>
-        {this.renderFooter(completedCount)}
+        <Footer/>
       </section>
     )
   }
