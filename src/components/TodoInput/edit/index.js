@@ -1,3 +1,4 @@
+import React from 'react'
 import connect from './connector'
 import TodoInput from '../TodoInput'
 

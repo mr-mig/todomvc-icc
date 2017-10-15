@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import AddTodoInput from '../AddTodoInput'
+import EditTodoInput from '../TodoInput/edit'
 import CompleteTodoCheckbox from '../CompleteTodoCheckbox'
 import DeleteTodoButton from '../DeleteTodoButton'
 
 export default class TodoItem extends Component {
   static propTypes = {
-    todo: PropTypes.object.isRequired,
-
-    onSaveAfterEdit: PropTypes.func.isRequired
+    todo: PropTypes.object.isRequired
   }
 
   state = {
@@ -22,7 +20,6 @@ export default class TodoItem extends Component {
 
   handleSave = (id, text) => {
     this.setState({ editing: false })
-    this.props.onSaveAfterEdit(id, text)
   }
 
   render() {
@@ -31,9 +28,10 @@ export default class TodoItem extends Component {
     let element
     if (this.state.editing) {
       element = (
-        <AddTodoInput text={todo.text}
+        <EditTodoInput id={ todo.id }
+                       text={todo.text}
                        editing={this.state.editing}
-                       onSave={(text) => this.handleSave(todo.id, text)} />
+                       onSave={ this.handleSave }/>
       )
     } else {
       element = (
