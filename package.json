@@ -1,11 +1,11 @@
 {
-  "name": "todomvc",
+  "name": "todomvc-icc",
+  "author": "mr-mig",
   "version": "0.0.1",
-  "private": true,
   "devDependencies": {
     "enzyme": "^2.8.2",
     "react-addons-test-utils": "^15.5.1",
-    "react-scripts": "^1.0.2"
+    "webpack": "^2.7.0"
   },
   "dependencies": {
     "classnames": "^2.2.5",
