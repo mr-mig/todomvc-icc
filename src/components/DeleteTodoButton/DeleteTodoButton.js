@@ -7,6 +7,7 @@ const DeleteTodoButton = ({ todo, onClick }) =>
 
 DeleteTodoButton.propTypes = {
   todo: PropTypes.object.isRequired,
+  
   onClick: PropTypes.func.isRequired
 }
 

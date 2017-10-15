@@ -4,11 +4,12 @@ import classnames from 'classnames'
 
 export default class TodoInput extends Component {
   static propTypes = {
-    onSave: PropTypes.func.isRequired,
     text: PropTypes.string,
     placeholder: PropTypes.string,
     editing: PropTypes.bool,
-    newTodo: PropTypes.bool
+    newTodo: PropTypes.bool,
+
+    onSave: PropTypes.func.isRequired
   }
 
   state = {

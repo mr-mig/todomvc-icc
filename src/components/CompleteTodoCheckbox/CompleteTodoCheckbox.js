@@ -9,6 +9,7 @@ const CompleteTodoCheckbox = ({ todo, onClick }) =>
 
 CompleteTodoCheckbox.propTypes = {
   todo: PropTypes.object.isRequired,
+
   onClick: PropTypes.func.isRequired
 }
 

@@ -8,6 +8,7 @@ import DeleteTodoButton from '../DeleteTodoButton'
 export default class TodoItem extends Component {
   static propTypes = {
     todo: PropTypes.object.isRequired,
+
     onSaveAfterEdit: PropTypes.func.isRequired
   }
 
