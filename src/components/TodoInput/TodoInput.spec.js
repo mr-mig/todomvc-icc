@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRenderer } from 'react-test-renderer/shallow'
-import AddTodoInput from './AddTodoInput'
+import AddTodoInput from './TodoInput'
 
 const setup = propOverrides => {
   const props = Object.assign({
