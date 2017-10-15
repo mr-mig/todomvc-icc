@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import AddTodoInput from '../AddTodoInput'
+import CompleteTodoCheckbox from '../CompleteTodoCheckbox'
 
 export default class TodoItem extends Component {
   static propTypes = {
     todo: PropTypes.object.isRequired,
-    editTodo: PropTypes.func.isRequired,
     onSaveAfterEdit: PropTypes.func.isRequired,
-    deleteTodo: PropTypes.func.isRequired,
-    completeTodo: PropTypes.func.isRequired
+    onToggleComplete: PropTypes.func.isRequired
   }
 
   state = {
@@ -38,10 +37,7 @@ export default class TodoItem extends Component {
     } else {
       element = (
         <div className="view">
-          <input className="toggle"
-                 type="checkbox"
-                 checked={todo.completed}
-                 onChange={() => completeTodo(todo.id)} />
+          <CompleteTodoCheckbox id={ todo.id }/>
           <label onDoubleClick={this.handleDoubleClick}>
             {todo.text}
           </label>
