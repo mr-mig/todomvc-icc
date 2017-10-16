@@ -2,7 +2,43 @@
 
 This is an example demonstrating **Independently Connected Components** pattern with React + Redux + Reselect.
  
-Based on initial [TodoMVC React example](https://github.com/reactjs/redux/tree/master/examples/todomvc) 
+It is based on initial [TodoMVC React example](https://github.com/reactjs/redux/tree/master/examples/todomvc).
+ 
+**Note**: I did not make a clean complete refactoring so that you can easier trace the difference from the original.
+
+This is a demo related to my talk at FDConf 2017 and several meetups. Here is [the slide deck](http://slides.com/mr-mig/microsoft-to-do-23) (the slides are 2D, you can go down in some sections).
+
+## Things to notice 
+
+1. Passing IDs through components (`MainSection`)
+1. Binding components to specific handlers (`CompelteTodoComponents`, `DeleteTodoButton`)
+1. Specializing components and reusing a template (`TodoInput/new` and `TodoInput/edit`)
+1. Domains (todo and filter) and linking domains (`filter-todo`)
+1. Derived data in selectors (`completedTodos`)
+1. Render props (`TodoItem`)
+
+## Why so much overhead? 
+
+This approach provides a clean structure for components and store.  
+Changing the app and moving things around are much easier than with other approaches.
+ 
+If you want to **feel** the benefits, I'd suggest to fork this repo and make these exercise changes to the app:
+
+1. Rename the list to "Home".
+1. Add a second list called "Work". It should work independently from "Home" list.
+1. Add a third todo list called "All" containing all tasks from both "Home" and "Work" lists.
+1. Extract filters (All, Active, Completed) into components and remove them from "Home" and "Work" list.
+1. When todo item is in "All" list, add a label to every todo item showing which list ("Home" or "Work") it belongs to.
+1. Move a chevron (complete all tasks) to the footer of "All" list. Move completed todos counter to the header of "All" list.
+1. Make "Work"/"Home" and "All" lists opaque when any todo is edited in "Home"/"Work" list (you probably need a new domain?).
+1. Add drag'n'drop between "Work" and "Home" lists.
+1. Add drag'n'drop sorting inside "Work" and "Home" lists.
+1. Measure the performance. Try different options:  
+    - passing primitives instead of todo model in props
+    - ImmutableJS 
+1. Make it possible to have 10000 items in any list  
+    - generate test data on app start
+    - use virtualized list
 
 ## Available Scripts
 
