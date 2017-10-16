@@ -3,10 +3,13 @@
 This is an example demonstrating **Independently Connected Components** pattern with React + Redux + Reselect.
  
 It is based on initial [TodoMVC React example](https://github.com/reactjs/redux/tree/master/examples/todomvc).
- 
-**Note**: I did not make a clean complete refactoring so that you can easier trace the difference from the original.
 
 This is a demo related to my talk at FDConf 2017 and several meetups. Here is [the slide deck](http://slides.com/mr-mig/microsoft-to-do-23) (the slides are 2D, you can go down in some sections).
+
+## Todo
+**Note**: I did not make a clean complete refactoring so that you can easier trace the difference from the original.
+
+- [ ] Make a clean refactoring in a separate branch 
 
 ## Things to notice 
 
@@ -16,6 +19,7 @@ This is a demo related to my talk at FDConf 2017 and several meetups. Here is [t
 1. Domains (todo and filter) and linking domains (`filter-todo`)
 1. Derived data in selectors (`completedTodos`)
 1. Render props (`TodoItem`)
+1. Dependent Actions (`relations/list->todo`)
 
 ## Why so much overhead? 
 
@@ -26,9 +30,10 @@ If you want to **feel** the benefits, I'd suggest to fork this repo and make the
 
 1. Rename the list to "Home".
 1. Add a second list called "Work". It should work independently from "Home" list.
+1. Make task counts work per list
 1. Add a third todo list called "All" containing all tasks from both "Home" and "Work" lists.
-1. Extract filters (All, Active, Completed) into components and remove them from "Home" and "Work" list.
 1. When todo item is in "All" list, add a label to every todo item showing which list ("Home" or "Work") it belongs to.
+1. Extract filters (All, Active, Completed) into components and remove them from "Home" and "Work" list.
 1. Move a chevron (complete all tasks) to the footer of "All" list. Move completed todos counter to the header of "All" list.
 1. Make "Work"/"Home" and "All" lists opaque when any todo is edited in "Home"/"Work" list (you probably need a new domain?).
 1. Add drag'n'drop between "Work" and "Home" lists.
