@@ -2,7 +2,8 @@
 
 This is an example demonstrating **Independently Connected Components** pattern with React + Redux + Reselect.
  
-It is based on initial [TodoMVC React example](https://github.com/reactjs/redux/tree/master/examples/todomvc).
+It is based on initial [TodoMVC React example](https://github.com/reactjs/redux/tree/master/examples/todomvc).  
+The example was extended to handle **several lists** (to show the additional comlexity). Have a look at exercises below.
 
 This is a demo related to my talk at FDConf 2017 and several meetups. Here is [the slide deck](http://slides.com/mr-mig/microsoft-to-do-23) (the slides are 2D, you can go down in some sections).
 
@@ -44,6 +45,8 @@ If you want to **feel** the benefits, I'd suggest to fork this repo and make the
 1. Make it possible to have 10000 items in any list  
     - generate test data on app start
     - use virtualized list
+    
+The exercises are listed by increasing complexity
 
 ## Available Scripts
 
