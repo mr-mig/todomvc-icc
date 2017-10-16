@@ -5,8 +5,6 @@ import {
   COMPLETE_ALL
 } from '../../domains/list/constants'
 
-import { deleteFromList } from '../../domains/list/actions'
-
 import {
   deleteTodo,
   completeTodo
