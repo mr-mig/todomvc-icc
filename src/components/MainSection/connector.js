@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { globalQuery } from '../../lib/selectorHelpers'
 import { filteredTodoIds, completedCount } from '../../state/queries'
-import { completeAll } from '../../domains/todo/actions'
+import { completeAll } from '../../domains/list/actions'
 
 const mapStateToProps = globalQuery([
     filteredTodoIds,
@@ -12,8 +12,8 @@ const mapStateToProps = globalQuery([
     completedCount
   }))
 
-const mapDispatchToProps = dispatch => ({
-  onCompleteAllClick: () => dispatch(completeAll())
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onCompleteAllClick: () => dispatch(completeAll(ownProps.id))
 })
 
 export default connect(

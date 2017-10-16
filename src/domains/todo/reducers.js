@@ -4,9 +4,7 @@ import {
   ADD_TODO,
   DELETE_TODO,
   EDIT_TODO,
-  COMPLETE_TODO,
-  COMPLETE_ALL,
-  CLEAR_COMPLETED
+  COMPLETE_TODO
 } from './constants'
 
 // indexed domain gives some perf benefits.
@@ -21,9 +19,7 @@ export default handleActions({
   [ADD_TODO]: addTodo,
   [DELETE_TODO]: deleteTodo,
   [EDIT_TODO]: editTodo,
-  [COMPLETE_TODO]: completeTodo,
-  [COMPLETE_ALL]: completeAll,
-  [CLEAR_COMPLETED]: clearCompleted
+  [COMPLETE_TODO]: completeTodo
 }, initialState)
 
 function nextId(byOrder) {
@@ -84,34 +80,4 @@ function completeTodo({ byId, byOrder }, { payload }) {
     byOrder
   }
 }
-
-function completeAll({ byId, byOrder }) {
-  const areAllMarked = byOrder.every(id => byId[id].completed)
-
-  return {
-    byId: byOrder.reduce(
-      (acc, id) => {
-        byId[id].completed = !areAllMarked
-        acc[id] = { ...byId[id] }
-        return acc
-      },
-      {}),
-    byOrder
-  }
-}
-
-function clearCompleted({ byId, byOrder }) {
-  const left = byOrder.filter(id => byId[id].completed === false)
-
-  return {
-    byId: left.reduce(
-      (acc, id) => {
-        acc[id] = { ...byId[id] }
-        return acc
-      },
-      {}),
-    byOrder: left
-  }
-}
-
 

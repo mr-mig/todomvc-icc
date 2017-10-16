@@ -7,6 +7,7 @@ import DeleteTodoButton from '../DeleteTodoButton'
 
 export default class MainSection extends Component {
   static propTypes = {
+    id: PropTypes.number.isRequired,
     todoIds: PropTypes.array.isRequired,
     completedCount: PropTypes.number.isRequired,
 
@@ -29,7 +30,7 @@ export default class MainSection extends Component {
   }
 
   render() {
-    const { todoIds, completedCount } = this.props
+    const { id, todoIds, completedCount } = this.props
 
     return (
       <section className="main">
@@ -43,7 +44,7 @@ export default class MainSection extends Component {
             />
           )}
         </ul>
-        <Footer/>
+        <Footer id={ id }/>
       </section>
     )
   }

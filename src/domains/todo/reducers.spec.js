@@ -3,9 +3,7 @@ import {
   addTodo,
   deleteTodo,
   editTodo,
-  completeTodo,
-  completeAll,
-  clearCompleted
+  completeTodo
 } from './actions'
 
 const empty = () => ({
@@ -98,70 +96,6 @@ describe('todos reducer', () => {
         }
       },
       byOrder: [0, 1]
-    })
-  })
-
-  it('should handle COMPLETE_ALL', () => {
-    const step1 = todos(empty(), addTodo('Run the tests'))
-    const step2 = todos(step1, addTodo('Use Redux'))
-    const result = todos(step2, completeAll())
-
-    expect(result).toEqual({
-      byId: {
-        0: {
-          text: 'Run the tests',
-          completed: true,
-          id: 0
-        },
-        1: {
-          text: 'Use Redux',
-          completed: true,
-          id: 1
-        }
-      },
-      byOrder: [0, 1]
-    })
-  })
-
-  it('should handle CLEAR_COMPLETED', () => {
-    const step1 = todos(empty(), addTodo('Run the tests'))
-    const step2 = todos(step1, addTodo('Use Redux'))
-    const step3 = todos(step2, completeTodo(0))
-    const result = todos(step3, clearCompleted())
-
-    expect(result).toEqual({
-      byId: {
-        1: {
-          text: 'Use Redux',
-          completed: false,
-          id: 1
-        }
-      },
-      byOrder: [1]
-    })
-  })
-
-  it('should not generate duplicate ids after CLEAR_COMPLETED', () => {
-    const step1 = todos(empty(), addTodo('Run the tests'))
-    const step2 = todos(step1, addTodo('Use Redux'))
-    const step3 = todos(step2, completeTodo(0))
-    const step4 = todos(step3, clearCompleted())
-    const result = todos(step4, addTodo('Test'))
-
-    expect(result).toEqual({
-      byId: {
-        1: {
-          text: 'Use Redux',
-          completed: false,
-          id: 1
-        },
-        2: {
-          text: 'Test',
-          completed: false,
-          id: 2
-        }
-      },
-      byOrder: [1, 2]
     })
   })
 })

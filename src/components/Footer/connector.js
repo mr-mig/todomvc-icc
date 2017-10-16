@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { globalQuery } from '../../lib/selectorHelpers'
-import { clearCompleted } from '../../domains/todo/actions'
+import { clearCompleted } from '../../domains/list/actions'
 import { applyFilter } from '../../domains/filter/actions'
 import { completedCount, activeCount, filter } from '../../state/queries'
 
@@ -13,8 +13,8 @@ const mapState = globalQuery([
     filter
   }))
 
-const mapDispatchToProps = dispatch => ({
-  onClearCompleted: () => dispatch(clearCompleted()),
+const mapDispatchToProps = (dispatch, ownProps)=> ({
+  onClearCompleted: () => dispatch(clearCompleted(ownProps.id)),
   onFilterClick: (value) => dispatch(applyFilter(value))
 })
 

@@ -5,14 +5,14 @@ import NewTodoInput from '../TodoInput/new'
 export default class Header extends Component {
 
   static propTypes = {
-    title: PropTypes.string.isRequired
+    list: PropTypes.object.isRequired
   }
 
   render() {
     return (
       <header className="header">
-        <h1>{ this.props.title }</h1>
-        <NewTodoInput onSave={this.handleSave}
+        <h1>{ this.props.list.title }</h1>
+        <NewTodoInput listId={ this.props.list.id }
                       placeholder="What needs to be done?" />
       </header>
     )

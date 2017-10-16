@@ -4,9 +4,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Redux TodoMVC Example</title>
+    <style>
+      body {
+        min-width: inherit !important;
+        max-width: inherit !important;
+        margin: auto !important;
+      }
+
+      #app {
+        display: flex;
+        justify-content: center;
+      }
+
+      .todoapp {
+        min-width: 550px;
+        flex: 0 auto;
+        margin: 130px 20px 40px 20px!important
+      }
+    </style>
   </head>
   <body>
-    <div class="todoapp" id="root"></div>
+    <div id="root"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
