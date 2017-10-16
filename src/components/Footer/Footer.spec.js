@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRenderer } from 'react-test-renderer/shallow'
 import Footer from './Footer'
-import { SHOW_ALL, SHOW_ACTIVE } from '../../domains/ui/constants'
+import { SHOW_ALL, SHOW_ACTIVE } from '../../domains/filter/constants'
 
 const setup = propOverrides => {
   const props = Object.assign({
@@ -9,7 +9,7 @@ const setup = propOverrides => {
     activeCount: 0,
     filter: SHOW_ALL,
     onClearCompleted: jest.fn(),
-    onShow: jest.fn()
+    onFilterClick: jest.fn()
   }, propOverrides)
 
   const renderer = createRenderer()
@@ -71,12 +71,12 @@ describe('components', () => {
       })
     })
 
-    it('should call onShow when a filter is clicked', () => {
+    it('should call onFilterClick when a filter is clicked', () => {
       const { output, props } = setup()
       const [ , filters ] = output.props.children
       const filterLink = filters.props.children[1].props.children
       filterLink.props.onClick({})
-      expect(props.onShow).toBeCalledWith(SHOW_ACTIVE)
+      expect(props.onFilterClick).toBeCalledWith(SHOW_ACTIVE)
     })
 
     it('shouldnt show clear button when no completed todos', () => {

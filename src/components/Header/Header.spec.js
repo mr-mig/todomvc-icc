@@ -2,10 +2,11 @@ import React from 'react'
 import { createRenderer } from 'react-test-renderer/shallow'
 
 import Header from './Header'
-import TodoTextInput from './TodoTextInput'
+import NewTodoInput from '../TodoInput/new'
 
 const setup = () => {
   const props = {
+    list : { title: 'todos', id: 0 },
     addTodo: jest.fn()
   }
 
@@ -33,18 +34,8 @@ describe('components', () => {
       expect(h1.type).toBe('h1')
       expect(h1.props.children).toBe('todos')
 
-      expect(input.type).toBe(TodoTextInput)
-      expect(input.props.newTodo).toBe(true)
+      expect(input.type).toBe(NewTodoInput)
       expect(input.props.placeholder).toBe('What needs to be done?')
-    })
-
-    it('should call addTodo if length of text is greater than 0', () => {
-      const { output, props } = setup()
-      const input = output.props.children[1]
-      input.props.onSave('')
-      expect(props.addTodo).not.toBeCalled()
-      input.props.onSave('Use Redux')
-      expect(props.addTodo).toBeCalled()
     })
   })
 })
