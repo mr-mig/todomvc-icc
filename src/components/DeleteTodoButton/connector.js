@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { uniqueQuery } from '../../lib/selectorHelpers'
-import { todoById } from '../../state/queries'
-import { deleteTodo } from '../../domains/todo/actions'
+import { todoById } from '../../state/domains/todo/selectors'
+import { deleteTodo } from '../../state/domains/todo/actions'
 
 const mapStateToProps = uniqueQuery([todoById], todo => ({ todo }))
 

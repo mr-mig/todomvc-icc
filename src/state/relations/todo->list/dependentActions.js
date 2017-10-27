@@ -1,8 +1,9 @@
-import { register } from '../../middlewares/dependentActions'
+import { register } from '../../../middlewares/dependentActions'
 import { ADD_NEW_TODO_TO_LIST } from '../../domains/list/constants'
 import { DELETE_TODO } from '../../domains/todo/constants'
 import { addToList, deleteFromList } from '../../domains/list/actions'
-import { getLatestId, allLists } from '../../state/queries'
+import { allLists } from '../../domains/list/selectors'
+import { getLatestId } from '../../domains/todo/selectors'
 
 register(ADD_NEW_TODO_TO_LIST, shouldAddToList, addToList)
 register(DELETE_TODO, shouldDeleteFromList, deleteFromList)

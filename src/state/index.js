@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import todo from '../domains/todo/reducers'
-import list from '../domains/list/reducers'
-import filter from '../domains/filter/reducers'
+import todo from '../state/domains/todo/reducers'
+import list from '../state/domains/list/reducers'
+import filter from '../state/domains/filter/reducers'
 
 const rootReducer = combineReducers({
   todo,

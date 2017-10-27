@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import { selectEntityFromDomain } from '../../lib/selectorHelpers'
+import { selectEntityFromDomain } from '../../../lib/selectorHelpers'
 
 export const listById = selectEntityFromDomain('list')
 export const listIndex = createSelector(

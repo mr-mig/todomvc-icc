@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import { selectEntityFromDomain } from '../../lib/selectorHelpers'
+import { selectEntityFromDomain } from '../../../lib/selectorHelpers'
 
 export const todoIndex = createSelector(state => state.todo, _ => _)
 export const allTodoIds = createSelector(todoIndex, index => index.byOrder)

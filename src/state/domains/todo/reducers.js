@@ -10,9 +10,10 @@ import {
 // indexed domain gives some perf benefits.
 const initialState = {
   byId: {
-    0: { text: 'Use ICCs!', completed: false, id: 0 }
+    0: { text: 'Use ICCs!', completed: false, id: 0 },
+    1: { text: 'Use ICCs!', completed: false, id: 1 }
   },
-  byOrder: [0] // in case order makes sense (e.g. you need to move/sort todos). This array will have IDs, not the objects
+  byOrder: [0, 1] // in case order makes sense (e.g. you need to move/sort todos). This array will have IDs, not the objects
 }
 
 export default handleActions({

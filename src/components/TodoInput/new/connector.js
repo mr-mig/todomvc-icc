@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { addTodo } from '../../../domains/todo/actions'
-import { addNewTodoToList } from '../../../domains/list/actions'
+import { addTodo } from '../../../state/domains/todo/actions'
+import { addNewTodoToList } from '../../../state/domains/list/actions'
 
 const mapDispatchToProps = (dispatch, ownProps)=> ({
   onSave: (text) => { 

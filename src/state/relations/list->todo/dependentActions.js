@@ -1,4 +1,4 @@
-import { register } from '../../middlewares/dependentActions'
+import { register } from '../../../middlewares/dependentActions'
 
 import {
   CLEAR_COMPLETED,
@@ -11,10 +11,11 @@ import {
 } from '../../domains/todo/actions'
 
 import {
-  listIndex,
   todoIndex,
   allTodoItems
-} from '../../state/queries'
+} from '../../domains/todo/selectors'
+
+import { listIndex } from '../../domains/list/selectors'
 
 register(CLEAR_COMPLETED, shouldDeleteTodos, deleteTodo)
 register(COMPLETE_ALL, shouldCompleteTodo, completeTodo)

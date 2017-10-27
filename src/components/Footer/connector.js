@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
 import { globalQuery } from '../../lib/selectorHelpers'
-import { clearCompleted } from '../../domains/list/actions'
-import { applyFilter } from '../../domains/filter/actions'
-import { completedCount, activeCount, filter } from '../../state/queries'
+import { clearCompleted } from '../../state/domains/list/actions'
+import { applyFilter } from '../../state/domains/filter/actions'
+import { completedCount, activeCount } from '../../state/domains/todo/selectors'
+import { filter } from '../../state/domains/filter/selectors'
 
 const mapState = globalQuery([
   completedCount, activeCount, filter
