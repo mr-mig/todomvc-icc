@@ -1,40 +1,16 @@
 import { register } from '../../../middlewares/dependentActions'
 
-import {
-  CLEAR_COMPLETED,
-  COMPLETE_ALL
-} from '../../domains/list/constants'
+import { COMPLETE_ALL } from '../../domains/list/constants'
+import { completeTodo } from '../../domains/todo/actions'
 
 import {
-  deleteTodo,
-  completeTodo
-} from '../../domains/todo/actions'
-
-import {
-  todoIndex,
-  allTodoItems
+  allTodoItems,
+  todoIndex
 } from '../../domains/todo/selectors'
 
 import { listIndex } from '../../domains/list/selectors'
 
-register(CLEAR_COMPLETED, shouldDeleteTodos, deleteTodo)
 register(COMPLETE_ALL, shouldCompleteTodo, completeTodo)
-
-function shouldDeleteTodos(oldState, newState, payload){
-  const listId = payload
-  const list = listIndex(newState).byId[listId]
-  const allTodos = allTodoItems(newState)
-  const todoIds = list.tasks
-
-  const completedTodoIds = allTodos
-    .filter(todo => todoIds.indexOf(todo.id) > -1)
-    .filter(todo => todo.completed)
-    .map(todo => todo.id)
-
-  return {
-    payloads: completedTodoIds
-  }
-}
 
 function shouldCompleteTodo(oldState, newState, payload) {
   const listId = payload
@@ -52,4 +28,3 @@ function shouldCompleteTodo(oldState, newState, payload) {
       .map(todo => todo.id)
   }
 }
-
