@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { globalQuery } from '../../lib/selectorHelpers'
 import { completedCount } from '../../state/domains/todo/selectors'
 import { filteredTodoIds } from '../../state/relations/filter-list-todo/filteredTodoIds'
-import { completeAll } from '../../state/domains/list/actions'
+import { completeAll } from '../../state/transactions/list->todo/completeAll'
 
 const mapStateToProps = globalQuery([
     filteredTodoIds,

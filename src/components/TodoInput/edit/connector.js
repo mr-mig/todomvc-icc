@@ -1,11 +1,9 @@
 import { connect } from 'react-redux'
-import { editTodo, deleteTodo } from '../../../state/domains/todo/actions'
+import { editOrTotallyDeleteTodo } from '../../../state/transactions/todo->list/editOrTotallyDeleteTodo'
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onSave: (text) => {
-    text.length === 0
-      ? dispatch(deleteTodo(ownProps.id))
-      : dispatch(editTodo(ownProps.id, text))
+    editOrTotallyDeleteTodo(ownProps.id, text)
 
     ownProps.onSave && ownProps.onSave(ownProps.id, text)
   }

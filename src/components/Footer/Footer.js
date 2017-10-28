@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../state/domains/filter/constants'
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../state/domains/filter/actions'
 
 const FILTER_TITLES = {
   [SHOW_ALL]: 'All',

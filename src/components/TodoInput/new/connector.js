@@ -1,13 +1,12 @@
 import { connect } from 'react-redux'
-import { addTodo } from '../../../state/domains/todo/actions'
-import { addNewTodoToList } from '../../../state/domains/list/actions'
+import { addNewTodoToList } from '../../../state/transactions/todo->list/addNewTodoToList'
 
 const mapDispatchToProps = (dispatch, ownProps)=> ({
-  onSave: (text) => { 
-    if (text.length !== 0) {
-      dispatch(addTodo(text))
-      dispatch(addNewTodoToList(ownProps.listId))
-    }
+  onSave: (text) => {
+    dispatch(addNewTodoToList({
+      text,
+      listId: ownProps.listId
+    }))
   }
 })
 

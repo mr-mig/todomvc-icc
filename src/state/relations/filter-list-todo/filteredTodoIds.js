@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../domains/filter/constants'
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../domains/filter/actions'
 import { todoIndex } from '../../domains/todo/selectors'
 import { listById } from '../../domains/list/selectors'
 import { filter } from '../../domains/filter/selectors'
