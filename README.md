@@ -10,7 +10,9 @@ This is a demo related to my talk at FDConf 2017 and several meetups. Here is [t
 ## Todo
 **Note**: I did not make a clean complete refactoring so that you can easier trace the difference from the original.
 
-- [ ] Make a clean refactoring in a separate branch 
+- [ ] Make a clean refactoring in a separate branch
+- [ ] Model list-todo relationship as a domain in `/relations`
+- [ ] Add `indexed domains`, `linking domains` and `constraints` (autodelete id from linking domain)
 
 ## Things to notice 
 
