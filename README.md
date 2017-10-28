@@ -24,6 +24,10 @@ This is a demo related to my talk at FDConf 2017 and several meetups. Here is [t
 1. Render props (`TodoItem`)
 1. Dependent Actions (`relations/list->todo`)
 
+## State normalization
+
+See [Database Normalization Wiki article](https://en.wikipedia.org/wiki/Database_normalization#Minimize_redesign_when_extending_the_database_structure) for some info on why it may be a good idea to normalize app state.
+
 ## Why so much overhead? 
 
 This approach provides a clean structure for components and store.  
