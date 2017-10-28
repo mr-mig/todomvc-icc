@@ -8,7 +8,7 @@ import {
 } from './actions'
 
 // indexed domain gives some perf benefits.
-const initialState = {
+export const initialState = {
   byId: {
     0: { text: 'Use ICCs!', completed: false, id: 0 },
     1: { text: 'Use ICCs!', completed: false, id: 1 }

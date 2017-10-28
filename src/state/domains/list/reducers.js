@@ -4,7 +4,7 @@ import {
   deleteFromList
 } from './actions'
 
-const initialState = {
+export const initialState = {
   byId: {
     0: { id: 0, title: 'todos', tasks:[0] },
     1: { id: 1, title: 'Ololo', tasks:[1] }

@@ -4,21 +4,14 @@ import {
   deleteFromList
 } from './actions'
 
+import { initialState } from './reducers'
+
 describe('list reducer', () => {
 
   it('should handle initial state', () => {
     const result = list(undefined, {})
 
-    expect(result).toEqual({
-      byId: {
-        0: {
-          id: 0,
-          title: 'todos',
-          tasks: [0]
-        }
-      },
-      byOrder: [0]
-    })
+    expect(result).toEqual(initialState)
   })
 
   it('should add a todo to list', function () {
@@ -29,14 +22,15 @@ describe('list reducer', () => {
     }))
 
     expect(result).toEqual({
+      ...initialState,
       byId: {
+        ...initialState.byId,
         0: {
           id: 0,
           title: 'todos',
           tasks: [0, 1]
         }
-      },
-      byOrder: [0]
+      }
     })
   })
 
@@ -53,14 +47,16 @@ describe('list reducer', () => {
     }))
 
     expect(result).toEqual({
+      ...initialState,
       byId: {
+        ...initialState.byId,
         0: {
           id: 0,
           title: 'todos',
           tasks: [0]
         }
       },
-      byOrder: [0]
+      byOrder: [0, 1]
     })
   })
 })

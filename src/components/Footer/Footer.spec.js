@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRenderer } from 'react-test-renderer/shallow'
 import Footer from './Footer'
-import { SHOW_ALL, SHOW_ACTIVE } from '../../state/domains/filter/constants'
+import { SHOW_ALL, SHOW_ACTIVE } from '../../state/domains/filter/actions'
 
 const setup = propOverrides => {
   const props = Object.assign({

@@ -1,10 +1,12 @@
 import todos from './reducers'
 import {
-  addTodoToList,
+  addTodo,
   deleteTodo,
   editTodo,
   completeTodo
 } from './actions'
+
+import { initialState } from './reducers'
 
 const empty = () => ({
   byId: {},
@@ -16,20 +18,11 @@ describe('todos reducer', () => {
   it('should handle initial state', () => {
     const result = todos(undefined, {})
 
-    expect(result).toEqual({
-      byId: {
-        0: {
-          text: 'Use ICCs!',
-          completed: false,
-          id: 0
-        }
-      },
-      byOrder: [0]
-    })
+    expect(result).toEqual(initialState)
   })
 
   it('should handle ADD_TODO', () => {
-    const result = todos(empty(), addTodoToList('Run the tests'))
+    const result = todos(empty(), addTodo('Run the tests'))
 
     expect(result).toEqual(
       {
@@ -45,8 +38,8 @@ describe('todos reducer', () => {
   })
 
   it('should handle DELETE_TODO', () => {
-    const step1 = todos(empty(), addTodoToList('Run the tests'))
-    const step2 = todos(step1, addTodoToList('Use Redux'))
+    const step1 = todos(empty(), addTodo('Run the tests'))
+    const step2 = todos(step1, addTodo('Use Redux'))
     const result = todos(step2, deleteTodo(0))
 
     expect(result).toEqual({
@@ -62,7 +55,7 @@ describe('todos reducer', () => {
   })
 
   it('should handle EDIT_TODO', () => {
-    const step1 = todos(empty(), addTodoToList('Run the tests'))
+    const step1 = todos(empty(), addTodo('Run the tests'))
     const result = todos(step1, editTodo(0, 'Use Redux'))
 
     expect(result).toEqual({
@@ -78,8 +71,8 @@ describe('todos reducer', () => {
   })
 
   it('should handle COMPLETE_TODO', () => {
-    const step1 = todos(empty(), addTodoToList('Run the tests'))
-    const step2 = todos(step1, addTodoToList('Use Redux'))
+    const step1 = todos(empty(), addTodo('Run the tests'))
+    const step2 = todos(step1, addTodo('Use Redux'))
     const result = todos(step2, completeTodo(1))
 
     expect(result).toEqual({
