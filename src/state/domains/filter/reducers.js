@@ -1,17 +1,16 @@
 import { handleActions } from 'redux-actions'
 
-import { APPLY_FILTER, SHOW_ALL } from './constants'
+import { applyFilter, SHOW_ALL } from './actions'
 
 const initialState = {
   value: SHOW_ALL
 }
 
 export default handleActions({
-  [APPLY_FILTER]: applyFilter
+  [applyFilter](state, { payload }){
+    state.value = payload
+    return { ...state }
+  }
 }, initialState)
 
-function applyFilter(state, { payload }) {
-  state.value = payload
-  return { ...state }
-}
 

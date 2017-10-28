@@ -1,9 +1,8 @@
 import { handleActions } from 'redux-actions'
-
 import {
-  ADD_TO_LIST,
-  DELETE_FROM_LIST
-} from './constants'
+  addToList,
+  deleteFromList
+} from './actions'
 
 const initialState = {
   byId: {
@@ -14,11 +13,11 @@ const initialState = {
 }
 
 export default handleActions({
-  [ADD_TO_LIST]: addToList,
-  [DELETE_FROM_LIST]: deleteFromList
+  [addToList]: add,
+  [deleteFromList]: removeFrom
 }, initialState)
 
-function addToList({ byId, byOrder }, { payload }) {
+function add({ byId, byOrder }, { payload }) {
 
   const list = byId[payload.listId]
   const newTasks = [...list.tasks, payload.todoId]
@@ -35,7 +34,7 @@ function addToList({ byId, byOrder }, { payload }) {
   }
 }
 
-function deleteFromList({ byId, byOrder }, { payload }) {
+function removeFrom({ byId, byOrder }, { payload }) {
   const list = byId[payload.listId]
   const newTasks = list.tasks.filter(id => id !== payload.todoId)
 

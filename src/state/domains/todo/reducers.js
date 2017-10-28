@@ -1,11 +1,11 @@
 import { handleActions } from 'redux-actions'
 
 import {
-  ADD_TODO,
-  DELETE_TODO,
-  EDIT_TODO,
-  COMPLETE_TODO
-} from './constants'
+  addTodo,
+  deleteTodo,
+  editTodo,
+  completeTodo
+} from './actions'
 
 // indexed domain gives some perf benefits.
 const initialState = {
@@ -17,17 +17,17 @@ const initialState = {
 }
 
 export default handleActions({
-  [ADD_TODO]: addTodo,
-  [DELETE_TODO]: deleteTodo,
-  [EDIT_TODO]: editTodo,
-  [COMPLETE_TODO]: completeTodo
+  [addTodo]: add,
+  [deleteTodo]: remove,
+  [editTodo]: edit,
+  [completeTodo]: complete
 }, initialState)
 
 function nextId(byOrder) {
   return byOrder.reduce((maxId, id) => Math.max(id, maxId), -1) + 1
 }
 
-function addTodo({ byId, byOrder }, { payload }) {
+function add({ byId, byOrder }, { payload }) {
 
   const todo = {
     id: nextId(byOrder),
@@ -47,7 +47,7 @@ function addTodo({ byId, byOrder }, { payload }) {
   }
 }
 
-function deleteTodo({ byId, byOrder }, { payload }) {
+function remove({ byId, byOrder }, { payload }) {
   delete byId[payload]
 
   return {
@@ -56,7 +56,7 @@ function deleteTodo({ byId, byOrder }, { payload }) {
   }
 }
 
-function editTodo({ byId, byOrder}, { payload }) {
+function edit({ byId, byOrder}, { payload }) {
   const todo = byId[payload.id]
   todo.text = payload.text
 
@@ -69,7 +69,7 @@ function editTodo({ byId, byOrder}, { payload }) {
   }
 }
 
-function completeTodo({ byId, byOrder }, { payload }) {
+function complete({ byId, byOrder }, { payload }) {
   const todo = byId[payload]
   todo.completed = !todo.completed
 
