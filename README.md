@@ -15,7 +15,7 @@ This is a demo related to my talk at FDConf 2017 and several meetups. Here is [t
 ## Things to notice 
 
 1. Passing IDs through components (`MainSection`)
-1. Binding components to specific handlers (`CompelteTodoComponents`, `DeleteTodoButton`)
+1. Binding components to specific handlers (`CompleteTodoComponents`, `DeleteTodoButton`)
 1. Specializing components and reusing a template (`TodoInput/new` and `TodoInput/edit`)
 1. Domains (todo and filter) and linking domains (`filter-todo`)
 1. Derived data in selectors (`completedTodos`)
